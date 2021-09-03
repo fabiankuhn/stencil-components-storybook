@@ -302,10 +302,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cloudyrigi/wordcloud@0.0.6":
-  version "0.0.6"
-  resolved "https://npm.pkg.github.com/download/@cloudyrigi/wordcloud/0.0.6/fd102030c114abdb960935cdd916593e11f9d22843f7f06dc279b957f8706faf#8af8dd35e676232ccfe01a4eddfd39519a569f74"
-  integrity sha512-7KjnKo7NlvqwKquMWYMzc/YEj7VIDPT2B25f8Ap+3FcdMBHPVWtX424eU3rCiygnfFCKwAHuUUfC8Ri92inUpw==
+"@fabiankuhn/stencil-components@^0.0.48":
+  version "0.0.48"
+  resolved "https://npm.pkg.github.com/download/@fabiankuhn/stencil-components/0.0.48/ecac8e2d3f0af59f9992f31b48497c6ebc857b23305d24a06dc4a0e9f4538bc2#36564171b764603a46c2ff8fa239a8a12c71f7a3"
+  integrity sha512-OO0R+Bxwmz+DqUd2tcQZlV2qx9OJeQ5BcocKPVNQGemhKJW6qlUjjoPIZuZNRox/hdcI2zIPxehnp1dEKGfQuA==
   dependencies:
     "@stencil/core" "^2.8.0"
 

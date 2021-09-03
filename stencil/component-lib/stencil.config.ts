@@ -1,4 +1,5 @@
 import { Config } from '@stencil/core';
+import { sass } from '@stencil/sass';
 import {reactOutputTarget} from "@stencil/react-output-target";
 
 export const config: Config = {
@@ -6,12 +7,12 @@ export const config: Config = {
   outputTargets: [
     reactOutputTarget({
       componentCorePackage: '@fabiankuhn/stencil-components',
-      proxiesFile: '../components-react/src/components.ts',
+      proxiesFile: '../component-lib-react/src/components.ts',
       includeDefineCustomElements: true,
     }),
     {
       type: 'dist',
-      esmLoaderPath: '../loader',
+      esmLoaderPath: './loader',
     },
     {
       type: 'dist-custom-elements-bundle',
@@ -24,5 +25,8 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
     { type: 'docs-readme' }
+  ],
+  plugins: [
+    sass()
   ],
 };

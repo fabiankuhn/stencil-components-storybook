@@ -6,7 +6,7 @@ import {Word} from "../../models/Word";
   styleUrl: 'sct-wordcloud.scss',
   shadow: true
 })
-export class SctWordcloud {
+export class WordCloud {
 
   /** The words to be displayed in the word cloud */
   @Prop() words!: string[];

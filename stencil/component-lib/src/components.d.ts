@@ -10,6 +10,10 @@ export namespace Components {
         "weight": number;
     }
     interface SctButton {
+        /**
+          * Style of the Button colors
+         */
+        "type": "primary" | "secondary" | "tertiary";
     }
     interface SctWordcloud {
         /**
@@ -48,6 +52,11 @@ declare namespace LocalJSX {
         "weight": number;
     }
     interface SctButton {
+        "onClicked"?: (event: CustomEvent<any>) => void;
+        /**
+          * Style of the Button colors
+         */
+        "type"?: "primary" | "secondary" | "tertiary";
     }
     interface SctWordcloud {
         /**

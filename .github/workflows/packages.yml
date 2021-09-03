@@ -1,0 +1,99 @@
+name: Publish Component Packages
+on:
+  release:
+    types: [published]
+
+env:
+  RELEASE_VERSION: ${GITHUB_REF#refs/*/}
+
+jobs:
+
+  stencil-components:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: stencil/component-lib
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      - name: Setup Node ⚙️
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+          registry-url: https://npm.pkg.github.com/
+
+      - name: Configure Git ⚙️
+        run: git config --global user.email "info@lemonbyte.ch" && git config --global user.name "Fabian"
+
+      - name: Install and Build 🔧
+        run: yarn install && yarn build
+
+      - name: Build Storybook 🔧
+        run: yarn storybook-build
+
+      - name: Update Storybook Demo Page 📣
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          BRANCH: master
+          folder: stencil/component-lib/dist-storybook
+          clean: true
+          target-folder: docs
+          commit-message: Update demo page
+
+      - name: Update Version ⚙️
+        run: yarn version --new-version ${{ env.RELEASE_VERSION }}
+
+      - name: Release 🚀
+        run: npm publish --@fabiankuhn:registry=https://npm.pkg.github.com/ --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_GITHUB }}
+
+      - name: Upload react wrapper artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: assets-for-react-wrapper
+          path: stencil/component-lib-react/src
+
+  stencil-react-wrapper:
+    needs: stencil-components
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: stencil/component-lib-react
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      - name: Setup Node ⚙️
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+          registry-url: https://npm.pkg.github.com/
+
+      - name: Configure Git ⚙️
+        run: git config --global user.email "info@lemonbyte.ch" && git config --global user.name "Fabian"
+
+      - name: Download react wrapper artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: assets-for-react-wrapper
+          path: stencil/component-lib-react/src
+
+      - name: Install and Build 🔧
+        run: yarn install && yarn build
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_GITHUB }}
+
+      - name: Update components version
+        run: yarn upgrade @fabiankuhn/stencil-components@latest
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_GITHUB }}
+
+      - name: Update Version ⚙️
+        run: yarn version --new-version ${{ env.RELEASE_VERSION }}
+
+      - name: Release 🚀
+        run: npm publish --@fabiankuhn:registry=https://npm.pkg.github.com/ --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_GITHUB }}

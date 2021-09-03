@@ -3,7 +3,7 @@ import readme from './readme.md';
 import {Doc} from "../../../.storybook/doc.mdx";
 
 export default {
-  title: 'Components',
+  title: 'Components/Wordcloud',
   parameters: {
     docs: {
       page: () => Doc(readme)
@@ -11,10 +11,10 @@ export default {
   },
 };
 
-export const WordCloud = ({words}) =>
+export const Colorful = ({words}) =>
   html`<sct-wordcloud .words=${words}></sct-wordcloud>`;
 
-WordCloud.args = {
+Colorful.args = {
   words: [
     "confuse",
     "confuse",

@@ -1,0 +1,58 @@
+$red: rgb(241, 78, 78);
+$blue: rgb(55, 114, 255);
+
+@mixin base-button {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.1em 0.1em 0;
+  border: 0.16em solid;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: all 0.2s;
+
+  @media all and (max-width: 30em) {
+    display: block;
+    margin: 0.2em auto;
+  }
+}
+
+.primary {
+  @include base-button;
+  border-color: rgba(255, 255, 255, 0);
+  background-color: $red;
+  color: #FFFFFF;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 1);
+  }
+}
+
+.secondary {
+  @include base-button;
+  border-color: rgba(255, 255, 255, 0);
+  background-color: $blue;
+  color: #FFFFFF;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 1);
+  }
+}
+
+.tertiary {
+  @include base-button;
+  color: black;
+  border-color: black;
+  background-color: white;
+
+  &:hover {
+    border-color: $red;
+  }
+}
+
+
+
