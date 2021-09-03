@@ -1,0 +1,45 @@
+{
+  "name": "@fabiankuhn/stencil-components",
+  "version": "0.0.2",
+  "description": "Stencil Component Starter",
+  "main": "dist/index.cjs.js",
+  "module": "dist/custom-elements/index.js",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/custom-elements/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/wordcloud/wordcloud.esm.js",
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "build": "stencil build --docs",
+    "generate": "stencil generate",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "storybook-start": "stencil build --docs --watch & start-storybook",
+    "storybook-build": "build-storybook -o ./dist-storybook"
+  },
+  "dependencies": {
+    "@stencil/core": "^2.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.4",
+    "@stencil/react-output-target": "^0.0.12",
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-docs": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/addon-links": "^6.3.7",
+    "@storybook/web-components": "^6.3.7",
+    "@types/jest": "^27.0.1",
+    "babel-loader": "^8.2.2",
+    "jest": "^27.1.0",
+    "jest-cli": "^27.1.0",
+    "lit-html": "^1.4.1",
+    "puppeteer": "^10.2.0"
+  },
+  "license": "MIT"
+}

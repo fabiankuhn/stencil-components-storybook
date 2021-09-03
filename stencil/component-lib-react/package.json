@@ -1,0 +1,51 @@
+{
+  "name": "@fabiankuhn/stencil-components-react",
+  "sideEffects": false,
+  "version": "0.0.11",
+  "private": false,
+  "description": "React specific wrapper for component-library",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudyrigi/wordcloud.git"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "clean": "rm -rf dist",
+    "compile": "npm run tsc",
+    "tsc": "tsc -p .",
+    "rollup": "rollup -c"
+  },
+  "main": "./dist/components.js",
+  "module": "./dist/components.js",
+  "types": "./dist/components.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "devDependencies": {
+    "@types/jest": "27.0.1",
+    "@types/node": "^16.7.10",
+    "@types/react": "17.0.19",
+    "@types/react-dom": "17.0.9",
+    "jest": "^27.1.0",
+    "jest-dom": "^3.0.2",
+    "np": "^7.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "^4.4.2"
+  },
+  "dependencies": {
+    "@fabiankuhn/stencil-components": "latest"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "dist"
+    ]
+  }
+}
